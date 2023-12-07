@@ -6,35 +6,65 @@
  */
 
 namespace App\Controllers;
+use App\Models\ProductoModel;
+use App\Models\CategoriaModel;
 
 /**
  * Description of Producto
  *
- * @author Enrique
+ * @author Torres Gamarra Enrique Ramon
  */
 class Producto extends BaseController {
 
     public function index() {
+        $productoModel = new ProductoModel();
+ 
         $data = [
-            'nombreVariableVista' => "Contenido",
-            'nombreVariableVistaNumero' => 5,
-            'nombreVariableVistaBool' => true,
-            'miArray' => [1,2,3,4,5,"Item array"]
-            ];
+            'titulo'    => 'Productos',
+            'productos' => $productoModel->find(),
+        ];
         
-        echo view("index", $data);
+        echo view("producto/index", $data);
     }
-
-    public function test($x = 0, $n = 10) {
-        echo "Hola Mundo test " .$x. " " .$n;
+    
+    public function  show($id){
+        $productoModel = new ProductoModel();
+        
+        $data = [
+            'producto' => $productoModel->find($id),
+        ];
+        
+        echo view("producto/show", $data);
     }
     
     public function new() {
-        echo view("producto/create");
+        $categoriaModel = new CategoriaModel;
+        
+        $data = [
+            'categorias' => $categoriaModel->find(),
+        ];
+        
+        echo view("producto/new", $data);
     }
     
     public function create() {
-        echo "Precesando el Form!";
+        $productoModel = new ProductoModel;
+        $categoriaModel = new CategoriaModel;
+        
+        $data = [
+            'categorias' => $categoriaModel->find(),
+        ];
+        
+        $productoModel->insert([
+            'nombre' => $this->request->getPost('nombre'),
+            'descripcion' => $this->request->getPost('descripcion'),
+            'precio' => $this->request->getPost('precio'),
+            'stock' => $this->request->getPost('stock'),
+            'imagen' => $this->request->getPost('imagen'),
+            'id_categoria' => $this->request->getPost('categoria'),
+        ]);
+        
+        echo view("producto/new", $data);
     }
     
     public function edit($id) {

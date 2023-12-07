@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 // activar rutas automaticas
 //$routes->setAutoRoute(true);
 
-//$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index');
 
 /*
 // Para crear productos
