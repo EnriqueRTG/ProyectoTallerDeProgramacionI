@@ -12,10 +12,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <h1><?= $titulo ?></h1>
 
-
-
+        <p><?= $mensaje ?></p>
+        
+        <br>
 
         <a href="/producto/new">Crear</a>
+
+        <br>
 
         <table>
             <thead>

@@ -38,6 +38,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <br>
 
             <input type="submit" value="Crear" />
+            
+            <br>
+
+        <a href="/producto">Lista de Productos</a>
+            
         </form>
     </body>
 </html>
